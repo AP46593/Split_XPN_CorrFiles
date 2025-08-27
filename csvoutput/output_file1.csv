@@ -1,0 +1,12 @@
+JOB|Doc_Code|27/08/2025                                                                                  
+META_BRAND|XYZA|E|PRD_Brand                                                                       
+META_BRAND|XYZA|A|PRD_Brand                                                                       
+META_PRD|PRD_CODE|TERR_CODE|LICENCE|SELL_TYPE|BUSS_UNIT|E|N|Prd_Name_Eng
+META_PRD|PRD_CODE|TERR_CODE|LICENCE|SELL_TYPE|ANBUSS_UNIT|A|N|Prd_Name_Afk
+CLNT_CORR|CLT_NUM|POL_NUM|PRD_CODE|INST||||||||||||||Y                                                         
+CLNT_ROLE|CLT_NUM|POL_NUM|PRD_CODE|INST|Role_Name|||||||||Y                                             
+PLAN|CLT_NUM|POL_NUM|PRD_CODE|INST|TERR_CODE|LICENCE|SELL_TYPE|BUSS_UNIT|XYZA|||17 November 2025||||||0.78%|0.35%|0.04%|0.10%|Y    
+CLNT_CORR|CLT_NUM|POL_NUM|PRD_CODE|INST||||||||||||||Y                                                         
+CLNT_ROLE|CLT_NUM|POL_NUM|PRD_CODE|INST|Role_Name|||||||||Y                                             
+PLAN|CLT_NUM|POL_NUM|PRD_CODE|INST|TERR_CODE|LICENCE|SELL_TYPE|BUSS_UNIT|XYZA|||17 November 2025||||||0.61%|0.35%||0.10%|Y         
+FOOTER|Doc_Code|2

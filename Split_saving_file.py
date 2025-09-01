@@ -16,9 +16,9 @@ from pathlib import Path
 from typing import List, Tuple
 
 # ===== CONFIGURABLE VARIABLES =====
-INPUT_FILENAME = "NTF_AER_MXINC_FULSAMP.csv"   # Name of file to pick from ./csvinput/
-ITEMS_PER_FILE = 10000                  # How many data-items per output file
-OUTPUT_PREFIX = "NTF_AER_MXINC_FULSAMP_split"       # Prefix for output files
+INPUT_FILENAME = "NTF_SAVINGS_SAMPLE.csv"   # Name of file to pick from ./csvinput/
+ITEMS_PER_FILE = 2                  # How many data-items per output file
+OUTPUT_PREFIX = "NTF_AER_SAVINGS_split"       # Prefix for output files
 # ==================================
 
 INPUT_DIR = Path("csvinput")

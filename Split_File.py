@@ -18,9 +18,9 @@ from pathlib import Path
 from typing import List, Tuple
 
 # ===== CONFIGURABLE =====
-INPUT_FILENAME = "NTF_MXINC_SAMPLE.csv"   # file inside ./csvinput/
-ITEMS_PER_FILE = 2                  # data-items per output file (e.g., 1 or 10)
-OUTPUT_PREFIX  = "NTF_AER_INCOME_split"      # output file prefix
+INPUT_FILENAME = "NTF_AER_SAVING_2024.csv"   # file inside ./csvinput/
+ITEMS_PER_FILE = 45000                  # data-items per output file (e.g., 1 or 10)
+OUTPUT_PREFIX  = "NTF_AER_SAVING_2024_45ksplit"      # output file prefix
 # ========================
 
 INPUT_DIR  = Path("csvinput")
@@ -28,9 +28,26 @@ OUTPUT_DIR = Path("csvoutput")
 
 
 def read_lines(path: Path) -> List[str]:
-    with path.open("r", encoding="utf-8") as f:
-        # preserve field padding; strip only newline
-        return [line.rstrip("\n") for line in f]
+    """
+    Read text while preserving field padding and trying common Windows encodings.
+    Strips only newline characters; keeps all other spaces/padding intact.
+    """
+    tried = []
+    for enc in ("utf-8", "utf-8-sig", "cp1252", "latin-1"):
+        try:
+            with path.open("r", encoding=enc, newline="") as f:
+                # strip only \r and \n; keep spaces in fields
+                return [line.rstrip("\r\n") for line in f]
+        except UnicodeDecodeError as e:
+            tried.append(f"{enc}: {e}")
+
+    # Last-resort fallback: read bytes and decode with latin-1 replacing bad bytes
+    with path.open("rb") as f:
+        raw = f.read()
+    text = raw.decode("latin-1", errors="replace")
+    # You can log/troubleshoot with the encodings we tried:
+    print("Warning: fell back to latin-1 with replacement. Tried:\n  " + "\n  ".join(tried))
+    return text.splitlines()
 
 def parse_header_and_meta(lines: List[str]) -> Tuple[str, List[str], int]:
     if not lines:
